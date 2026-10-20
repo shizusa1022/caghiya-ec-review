@@ -476,13 +476,14 @@ function details(){
 function payload(stage){
   var d = details(), op = opinions(), a = answers();
   var good = d.taste.filter(function(t){ return BAD.indexOf(t) < 0; });
+  var bad = d.taste.filter(function(t){ return BAD.indexOf(t) >= 0; });
   return {
     ts: new Date().toISOString(), kind: CFG.kind || "brewery",
     event: d.src === "event" ? (d.evName || "イベント") : (d.srcLabel || "ネットショップ"),
     points: good.concat(d.evGood), beers: [d.product === "その他" ? (d.otherName || "その他") : d.product],
     withwho: d.scene.join(" / "), tone: stage === "draft" ? (a.tone === "casual" ? "くだけた感じ" : "です・ます") : "",
     personal: d.impression, draft: stage === "draft" ? $("body").value : "",
-    opinions: { beer: op.beer, staff: [d.staff.join("、"), op.staff].filter(Boolean).join("／"), shop: [d.evScore ? "イベントの満足：" + d.evScore : "", op.shop].filter(Boolean).join("／"), other: op.other },
+    opinions: { beer: [bad.length ? "味：" + bad.join("、") : "", op.beer].filter(Boolean).join("／"), staff: [d.staff.join("、"), op.staff].filter(Boolean).join("／"), shop: [d.evScore ? "イベントの満足：" + d.evScore : "", op.shop].filter(Boolean).join("／"), other: op.other },
     stage: stage, src: "ec-review:" + (d.src || "none") + (d.qr ? ":qr" : "") + (d.productId ? ":p" + d.productId : ""),
     extra: d
   };
