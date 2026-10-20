@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+</head>
+<body>
+<title>カギヤ 口コミ下書き</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* 白地・1列のスマホ画面。紺の文字、金は印だけ。イラストは紺の線＋金の面（標準デザイン） */
+:root{
+  --navy:#1A2B5C; --gold:#F5C13D; --bg:#FFFFFF; --fg:#1d2433; --muted:#5d6680;
+  --line:#dfe3ec; --soft:#f5f7fb; --cream:#fff8e3; --ok:#1f7a4d; --warn:#9a3b12; --warnbg:#fff3ec;
+  --font:"Yu Gothic","YuGothic","Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",Meiryo,sans-serif;
+  color-scheme:light;
+}
+html,body{background:var(--bg);color:var(--fg)}
+body{font-family:var(--font);font-size:16px;line-height:1.8;margin:0}
+[hidden]{display:none!important}
+.wrap{max-width:520px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header .wrap{padding-block:20px 8px;display:grid;gap:10px;justify-items:center;text-align:center}
+.brand{font-size:12px;letter-spacing:.18em;color:var(--navy);font-weight:700}
+.hero{width:min(240px,64vw);height:auto}
+h1{margin:0;font-size:23px;line-height:1.5;color:var(--navy);text-wrap:balance}
+header p{margin:0;font-size:15px;color:var(--muted)}
+.badge{font-size:12px;color:var(--navy);background:var(--cream);border-radius:999px;padding:3px 12px;margin:0;font-weight:700}
+.proto{font-size:12px;color:var(--muted);background:var(--soft);border-radius:8px;padding:6px 10px;margin:0}
+.steps{display:flex;gap:6px;list-style:none;margin:0;padding:14px 0 0;font-size:13px}
+.steps li{flex:1;border-top:4px solid var(--line);padding-top:6px;color:var(--muted)}
+.steps li.on{border-color:var(--gold);color:var(--navy);font-weight:700}
+main .wrap{padding-block:8px 48px;display:grid;gap:24px}
+section{display:grid;gap:20px}
+.group{display:grid;gap:20px}
+.block{display:grid;gap:20px;border-top:1px solid var(--line);padding-top:18px}
+.block h2{margin:0;font-size:17px;color:var(--navy);display:flex;gap:8px;align-items:center}
+.block h2 svg{width:28px;height:28px;flex:none}
+.q{display:grid;gap:8px;margin:0;padding:0;border:0;min-width:0}
+.q legend,.q>label{font-weight:700;font-size:16px;padding:0;color:var(--navy)}
+.q .opt{font-weight:400;color:var(--muted);font-size:13px;margin-left:6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-size:15px;border:1.5px solid var(--line);background:#fff;color:var(--fg);border-radius:999px;padding:7px 15px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff;font-weight:700}
+.chip:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+select,input[type=text],textarea{font:inherit;width:100%;box-sizing:border-box;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--fg);padding:11px 12px}
+textarea{min-height:9.5em;resize:vertical;line-height:1.85}
+.hint{font-size:13px;color:var(--muted);margin:0}
+.gift{background:var(--cream);border-radius:14px;padding:14px 16px;font-size:14px;display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:center}
+.gift svg{width:44px;height:44px}
+.gift b{color:var(--navy);display:block}
+.btn{font:inherit;font-weight:700;font-size:17px;border-radius:999px;padding:14px 18px;cursor:pointer;border:2px solid var(--navy);background:var(--navy);color:#fff;text-align:center;text-decoration:none;display:block}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+.btn.sub{background:#fff;color:var(--navy);border-color:var(--line);font-weight:400;font-size:14px;padding:8px 14px;display:inline-block}
+.btn[disabled]{opacity:.5;cursor:default}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.note{font-size:14px;background:var(--soft);border-radius:10px;padding:10px 12px;margin:0}
+.warn{font-size:14px;background:var(--warnbg);color:var(--warn);border-radius:10px;padding:10px 12px;margin:0}
+.count{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;text-align:right;margin:0}
+.howto{margin:0;padding-left:1.4em;display:grid;gap:4px;font-size:15px}
+.status{font-size:14px;color:var(--muted);margin:0;min-height:1.4em}
+.done{font-size:14px;color:var(--ok);margin:0;min-height:1.4em}
+.center{display:grid;justify-items:center;text-align:center;gap:10px}
+.center svg{width:min(200px,56vw);height:auto}
+.center h2{margin:0;font-size:21px;color:var(--navy)}
+hr{border:0;border-top:1px solid var(--line);margin:0}
+footer{border-top:1px solid var(--line);padding-top:14px;font-size:13px;color:var(--muted);display:grid;gap:6px}
+footer a{color:var(--navy)}
+/* 集約ページ */
+.sumgrid{display:grid;gap:14px}
+.sumbox{border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;gap:8px}
+.sumbox h3{margin:0;font-size:14px;color:var(--navy)}
+.bar{display:grid;grid-template-columns:minmax(0,9em) 1fr 2.5em;gap:8px;align-items:center;font-size:13px}
+.bar .lab{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar .trk{height:10px;background:var(--soft);border-radius:999px;overflow:hidden}
+.bar .fill{height:100%;background:var(--gold)}
+.bar .n{text-align:right;font-variant-numeric:tabular-nums;color:var(--navy);font-weight:700}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.cards{display:grid;gap:12px}
+.card{border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;gap:4px;font-size:14px}
+.card .top{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.card .name{font-weight:700;color:var(--navy);font-size:15px}
+.card .when{color:var(--muted);font-variant-numeric:tabular-nums}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tag{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:1px 8px;color:var(--muted)}
+.tag.src{border-color:var(--gold);color:var(--navy);background:var(--cream)}
+.empty{text-align:center;color:var(--muted);font-size:14px;padding:24px 0}
+@media (prefers-reduced-motion:no-preference){.chip,.btn{transition:background .15s,border-color .15s}}
+</style>
+
+<header><div class="wrap">
+  <div class="brand">CAGHIYA BREWERY</div>
+  <svg class="hero" viewBox="0 0 240 150" role="img" aria-label="ビールのグラスと、星のふきだしの絵">
+    <ellipse cx="120" cy="140" rx="92" ry="7" fill="#f5f7fb"/>
+    <path d="M78 46 h56 l-6 88 a6 6 0 0 1 -6 6 h-32 a6 6 0 0 1 -6 -6 z" fill="#F5C13D" stroke="#1A2B5C" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M134 62 q22 0 22 22 q0 22 -24 24" fill="none" stroke="#1A2B5C" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="96" cy="96" r="3" fill="#fff"/><circle cx="110" cy="114" r="2.5" fill="#fff"/><circle cx="102" cy="78" r="2" fill="#fff"/><circle cx="116" cy="88" r="2.5" fill="#fff"/>
+    <path d="M74 50 q-6 -14 8 -18 q4 -12 18 -8 q8 -10 20 -2 q14 -4 16 10 q10 4 4 18 z" fill="#ffffff" stroke="#1A2B5C" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M160 14 h56 a10 10 0 0 1 10 10 v26 a10 10 0 0 1 -10 10 h-36 l-12 12 v-12 h-8 a10 10 0 0 1 -10 -10 v-26 a10 10 0 0 1 10 -10 z" fill="#ffffff" stroke="#1A2B5C" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M176 26 l3 6 6 1 -4.5 4 1 6 -5.5 -3 -5.5 3 1 -6 -4.5 -4 6 -1 z" fill="#F5C13D"/>
+    <path d="M196 26 l3 6 6 1 -4.5 4 1 6 -5.5 -3 -5.5 3 1 -6 -4.5 -4 6 -1 z" fill="#F5C13D"/>
+    <path d="M216 26 l3 6 6 1 -4.5 4 1 6 -5.5 -3 -5.5 3 1 -6 -4.5 -4 6 -1 z" fill="#F5C13D" opacity=".35"/>
+    <g transform="translate(26 70)" stroke="#1A2B5C" stroke-width="3" fill="none" stroke-linecap="round">
+      <circle cx="12" cy="12" r="9" fill="#ffffff"/><path d="M21 12 h22 M36 12 v7 M42 12 v5"/>
+    </g>
+  </svg>
+  <h1>飲んだ感想を、口コミにしませんか</h1>
+  <p>1分のアンケートに答えると、あなたの答えから口コミの下書きができます。</p>
+  <p class="badge" id="srcBadge" hidden></p>
+  <p class="proto" id="protoNote" hidden>試作です（2026-10-20）</p>
+</div></header>
+
+<main><div class="wrap">
+  <ol class="steps" id="steps" aria-label="すすみ方">
+    <li id="s1" class="on">1 答える</li><li id="s2">2 下書きを直す</li><li id="s3">3 レビューを送る</li>
+  </ol>
+
+  <!-- 1 答える -->
+  <section id="step1">
+    <div class="gift">
+      <svg viewBox="0 0 44 44" aria-hidden="true"><rect x="6" y="18" width="32" height="20" rx="3" fill="#F5C13D" stroke="#1A2B5C" stroke-width="2.5"/><rect x="4" y="12" width="36" height="8" rx="2" fill="#fff" stroke="#1A2B5C" stroke-width="2.5"/><path d="M22 12 v26" stroke="#1A2B5C" stroke-width="2.5"/><path d="M22 12 q-10 -10 -12 -2 q0 4 12 2 q10 -10 12 -2 q0 4 -12 2" fill="#fff" stroke="#1A2B5C" stroke-width="2.5" stroke-linejoin="round"/></svg>
+      <div><b>口コミを書いてくださった方へ</b>口コミを投稿してくださった方に、特典（<span class="giftName"></span>）をお送りします。よい内容かどうか、星の数は関係ありません。</div>
+    </div>
+    <div class="row" id="sampleRow" hidden>
+      <button class="btn sub" type="button" id="fillSample">見本の答えで試す</button>
+      <button class="btn sub" type="button" id="fillSampleEv">見本（イベント）で試す</button>
+    </div>
+
+    <fieldset class="q"><legend>20歳以上ですか</legend>
+      <div class="chips" data-name="adult" data-single>
+        <button type="button" class="chip" aria-pressed="false" data-v="yes">はい</button>
+        <button type="button" class="chip" aria-pressed="false" data-v="no">いいえ</button>
+      </div>
+    </fieldset>
+    <p class="warn" id="minor" hidden>ごめんなさい。このアンケートは20歳以上の方にお願いしています。</p>
+
+    <div id="qs" class="group">
+      <fieldset class="q" id="srcBox"><legend>このアンケートを、どこで知りましたか</legend>
+        <div class="chips" data-name="src" data-single>
+          <button type="button" class="chip" aria-pressed="false" data-v="ec">ネットで買った商品のカード</button>
+          <button type="button" class="chip" aria-pressed="false" data-v="line">カギヤのLINE</button>
+          <button type="button" class="chip" aria-pressed="false" data-v="event">イベント会場</button>
+          <button type="button" class="chip" aria-pressed="false" data-v="store">お店</button>
+          <button type="button" class="chip" aria-pressed="false" data-v="other">その他</button>
+        </div>
+      </fieldset>
+
+      <div class="q"><label for="product">どの商品ですか</label>
+        <select id="product"></select>
+        <p class="hint">一覧に無いビール（イベントで飲んだものなど）は「その他」を選んでください。</p>
+      </div>
+      <div class="q" id="otherBox" hidden>
+        <label for="otherName">飲んだビールの名前<span class="opt">わかれば</span></label>
+        <input type="text" id="otherName" placeholder="例：イベント限定のIPA">
+      </div>
+
+      <fieldset class="q"><legend>どんなときに飲みましたか<span class="opt">いくつでも</span></legend>
+        <div class="chips" data-name="scene">
+          <button type="button" class="chip" aria-pressed="false">家でごはんと</button>
+          <button type="button" class="chip" aria-pressed="false">友だち・家族と</button>
+          <button type="button" class="chip" aria-pressed="false">ひとりでゆっくり</button>
+          <button type="button" class="chip" aria-pressed="false">イベントで</button>
+          <button type="button" class="chip" aria-pressed="false">贈りものにした</button>
+          <button type="button" class="chip" aria-pressed="false">贈りものでもらった</button>
+        </div>
+      </fieldset>
+
+      <fieldset class="q"><legend>味はどうでしたか<span class="opt">いくつでも</span></legend>
+        <div class="chips" data-name="taste">
+          <button type="button" class="chip" aria-pressed="false">すっきり</button>
+          <button type="button" class="chip" aria-pressed="false">飲みやすい</button>
+          <button type="button" class="chip" aria-pressed="false">香りがよい</button>
+          <button type="button" class="chip" aria-pressed="false">苦みがしっかり</button>
+          <button type="button" class="chip" aria-pressed="false">フルーティー</button>
+          <button type="button" class="chip" aria-pressed="false">コクがある</button>
+          <button type="button" class="chip" aria-pressed="false">思ったより苦い</button>
+          <button type="button" class="chip" aria-pressed="false">思ったより重い</button>
+          <button type="button" class="chip" aria-pressed="false">好みと違った</button>
+        </div>
+      </fieldset>
+
+      <div class="q"><label for="impression">いちばん印象に残ったことを、ひとこと<span class="opt">任意</span></label>
+        <input type="text" id="impression" placeholder="例：缶を開けたときの香りにおどろいた">
+      </div>
+      <div class="q"><label for="food">いっしょに食べたもの<span class="opt">任意</span></label>
+        <input type="text" id="food" placeholder="例：からあげ、焼き魚">
+      </div>
+      <fieldset class="q"><legend>どんな人にすすめたいですか<span class="opt">任意・いくつでも</span></legend>
+        <div class="chips" data-name="who">
+          <button type="button" class="chip" aria-pressed="false">クラフトビールが初めての人</button>
+          <button type="button" class="chip" aria-pressed="false">苦いビールが好きな人</button>
+          <button type="button" class="chip" aria-pressed="false">ビールが少し苦手な人</button>
+          <button type="button" class="chip" aria-pressed="false">贈りものを探している人</button>
+          <button type="button" class="chip" aria-pressed="false">川崎に縁のある人</button>
+        </div>
+      </fieldset>
+
+      <!-- イベントのときだけ：接客とイベントの内容 -->
+      <div class="block" id="eventBlock" hidden>
+        <h2><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M4 24 L14 4 L24 24 Z" fill="#F5C13D" stroke="#1A2B5C" stroke-width="2" stroke-linejoin="round"/><path d="M14 4 v-2" stroke="#1A2B5C" stroke-width="2"/></svg>イベントについても教えてください</h2>
+        <p class="hint" style="margin-top:-12px">ここの答えは口コミには入りません。次のイベントづくりに使います。</p>
+        <div class="q"><label for="evName">どのイベントですか</label>
+          <input type="text" id="evName" placeholder="例：川崎のビールイベント">
+        </div>
+        <fieldset class="q"><legend>イベントはどうでしたか</legend>
+          <div class="chips" data-name="evScore" data-single>
+            <button type="button" class="chip" aria-pressed="false" data-v="5">とてもよかった</button>
+            <button type="button" class="chip" aria-pressed="false" data-v="4">よかった</button>
+            <button type="button" class="chip" aria-pressed="false" data-v="3">ふつう</button>
+            <button type="button" class="chip" aria-pressed="false" data-v="2">あまりよくなかった</button>
+            <button type="button" class="chip" aria-pressed="false" data-v="1">よくなかった</button>
+          </div>
+        </fieldset>
+        <fieldset class="q"><legend>スタッフの対応はどうでしたか<span class="opt">いくつでも</span></legend>
+          <div class="chips" data-name="staff">
+            <button type="button" class="chip" aria-pressed="false">説明がわかりやすかった</button>
+            <button type="button" class="chip" aria-pressed="false">好みに合うビールを教えてくれた</button>
+            <button type="button" class="chip" aria-pressed="false">話しやすかった</button>
+            <button type="button" class="chip" aria-pressed="false">ビールの話が楽しかった</button>
+            <button type="button" class="chip" aria-pressed="false">待ち時間が長かった</button>
+            <button type="button" class="chip" aria-pressed="false">もっと説明がほしかった</button>
+          </div>
+        </fieldset>
+        <fieldset class="q"><legend>イベントでよかったこと<span class="opt">いくつでも</span></legend>
+          <div class="chips" data-name="evGood">
+            <button type="button" class="chip" aria-pressed="false">ビールの種類</button>
+            <button type="button" class="chip" aria-pressed="false">会場の雰囲気</button>
+            <button type="button" class="chip" aria-pressed="false">食べもの</button>
+            <button type="button" class="chip" aria-pressed="false">音楽・催し</button>
+            <button type="button" class="chip" aria-pressed="false">値段</button>
+            <button type="button" class="chip" aria-pressed="false">場所・行きやすさ</button>
+          </div>
+        </fieldset>
+      <!-- お店への意見：口コミには入れず、お店にだけ届ける -->
+      <div class="block" id="opBlock">
+        <h2><svg viewBox="0 0 28 28" aria-hidden="true"><rect x="3" y="6" width="22" height="16" rx="3" fill="#fff" stroke="#1A2B5C" stroke-width="2"/><path d="M3 9 l11 7 11 -7" fill="none" stroke="#1A2B5C" stroke-width="2"/><circle cx="23" cy="7" r="4" fill="#F5C13D"/></svg>お店への意見（お店にだけ届きます）</h2>
+        <p class="hint" style="margin-top:-12px">ここに書いたことは口コミには入りません。お店のスタッフだけが読みます。正直に</p>
+        <div class="q"><label for="opBeer">ビールについて<span class="opt">任意</span></label><input type="text" id="opBeer"></div>
+        <div class="q"><label for="opStaff">接客について<span class="opt">任意</span></label><input type="text" id="opStaff"></div>
+        <div class="q"><label for="opShop" id="opShopLabel">ネットショップについて</label><input type="text" id="opShop"></div>
+        <div class="q"><label for="opOther">そのほか<span class="opt">任意</span></label><input type="text" id="opOther"></div>
+      </div>
+
+      <fieldset class="q" id="toneBox"><legend>文の感じ</legend>
+        <div class="chips" data-name="tone" data-single>
+          <button type="button" class="chip" aria-pressed="true" data-v="polite">です・ます</button>
+          <button type="button" class="chip" aria-pressed="false" data-v="casual">くだけた感じ</button>
+        </div>
+      </fieldset>
+
+      <p class="warn" id="formErr" hidden></p>
+      <button class="btn" type="button" id="make">下書きを作る</button>
+      <div class="row" style="justify-content:center"><button class="btn sub" type="button" id="opOnly">意見だけ送る（口コミは書かない）</button></div>
+      <p class="status" id="makeStatus" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <!-- 2・3 下書きを直す・送る -->
+  <section id="step2" hidden>
+    <p class="note">あなたの答えだけで作った下書きです。言っていないことは書いていません。自由に直してください。</p>
+    <div class="q"><label for="title">タイトル<span class="opt">任意</span></label>
+      <input type="text" id="title">
+    </div>
+    <div class="q"><label for="body">レビュー内容</label>
+      <textarea id="body"></textarea>
+      <p class="count" id="count"></p>
+    </div>
+    <div class="row">
+      <button class="btn sub" type="button" data-rw="short">短く</button>
+      <button class="btn sub" type="button" data-rw="polite">です・ますに</button>
+      <button class="btn sub" type="button" data-rw="casual">くだけた感じに</button>
+      <button class="btn sub" type="button" id="selfWrite">自分で書く</button>
+    </div>
+    <p class="status" id="rwStatus" aria-live="polite"></p>
+    <hr>
+    <div class="q">
+      <strong style="color:var(--navy)">あなたがレビューを送ります</strong>
+      <ol class="howto">
+        <li>下のボタンを押すと、レビュー内容がコピーされ、レビュー画面が開きます</li>
+        <li>「レビュー内容」に貼り付けます</li>
+        <li>星（評価）は、あなたが付けてください</li>
+        <li>ニックネーム・性別・年代は、入れなくてもかまいません</li>
+        <li>確認の画面を見てから送ります</li>
+      </ol>
+    </div>
+    <a class="btn gold" id="go" href="#" target="_blank" rel="noopener">レビュー画面を開く（文はコピーされます）</a>
+    <p class="done" id="copied" aria-live="polite"></p>
+    <p class="warn" id="protoWarn" hidden>試作の注意：開いたレビュー画面で送ると、本当にショップへ投稿されます。ためすときは送信の手前で止めてください。</p>
+    <div class="gift">
+      <svg viewBox="0 0 44 44" aria-hidden="true"><rect x="6" y="18" width="32" height="20" rx="3" fill="#F5C13D" stroke="#1A2B5C" stroke-width="2.5"/><rect x="4" y="12" width="36" height="8" rx="2" fill="#fff" stroke="#1A2B5C" stroke-width="2.5"/><path d="M22 12 v26" stroke="#1A2B5C" stroke-width="2.5"/></svg>
+      <div><b>特典の受け取り（案）</b>投稿したあと、カギヤブルワリーのLINEに「口コミを書きました」と、投稿したときのニックネームを送ってください。お店がレビューを確かめてから、特典（<span class="giftName"></span>）をお送りします。</div>
+    </div>
+    <div class="row"><button class="btn sub" type="button" id="back">答えを直す</button></div>
+  </section>
+
+  <!-- その他：ありがとう -->
+  <section id="thanks" hidden>
+    <div class="center">
+      <svg viewBox="0 0 200 120" aria-hidden="true">
+        <g stroke="#1A2B5C" stroke-width="3" stroke-linejoin="round">
+          <path d="M40 40 h44 l-5 66 a5 5 0 0 1 -5 5 h-24 a5 5 0 0 1 -5 -5 z" fill="#F5C13D" transform="rotate(-10 62 75)"/>
+          <path d="M116 40 h44 l-5 66 a5 5 0 0 1 -5 5 h-24 a5 5 0 0 1 -5 -5 z" fill="#F5C13D" transform="rotate(10 138 75)"/>
+          <path d="M38 44 q-4 -12 8 -14 q6 -10 18 -4 q12 -4 14 8 q6 6 0 12 z" fill="#fff" transform="rotate(-10 62 75)"/>
+          <path d="M114 44 q-4 -12 8 -14 q6 -10 18 -4 q12 -4 14 8 q6 6 0 12 z" fill="#fff" transform="rotate(10 138 75)"/>
+        </g>
+        <path d="M100 8 v12 M86 14 l6 8 M114 14 l-6 8" stroke="#F5C13D" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+      <h2>ありがとうございました</h2>
+      <p style="margin:0">お答えは、カギヤブルワリーに届きました。<br>これからのビールづくりの参考にします。</p>
+      <p class="hint" id="thanksNote"></p>
+    </div>
+    <div class="row" style="justify-content:center"><button class="btn sub" type="button" id="again">もう1つ答える</button></div>
+  </section>
+
+  <!-- 集約ページ（お店用・試作のみ。本番はスプレッドシート） -->
+  <section id="matome" hidden>
+    <div class="q">
+      <h2 style="margin:0;font-size:20px;color:var(--navy)">アンケートの集約（お店用）</h2>
+      <p class="hint">すべての答えが入ります（名前・連絡先は集めていません）。本番ではGoogleのスプレッドシートに同じ列で1行ずつたまります。</p>
+    </div>
+    <div class="filters chips" data-name="mf" data-single>
+      <button type="button" class="chip" aria-pressed="true" data-v="">すべて</button>
+      <button type="button" class="chip" aria-pressed="false" data-v="ec">EC</button>
+      <button type="button" class="chip" aria-pressed="false" data-v="event">イベント</button>
+      <button type="button" class="chip" aria-pressed="false" data-v="etc">その他</button>
+    </div>
+    <div class="sumgrid" id="sum"></div>
+    <div class="cards" id="cards"><p class="empty">読み込んでいます…</p></div>
+    <div class="row"><a class="btn sub" href="#top" id="toSurvey">アンケートに戻る</a></div>
+  </section>
+
+  <footer id="foot">
+    <span>答えは、名前や連絡先なしで記録し、お店づくりの参考にします。</span>
+    <a href="#matome" id="toMatome" hidden>アンケートの集約を見る（お店用）</a>
+  </footer>
+</div></main>
+
+<script>
+/* =====================================================================
+   カギヤ 口コミ下書き（EC）— 設定。「口コミのカギ」と同じく、この部分だけ直せば動きが変わります
+   logEndpoint：答えを送るGoogle Apps Script（/exec）。店舗の口コミアプリ（口コミのカギ）と同じ送り先・同じ形。空なら送らない
+   kind："brewery"＝醸造部（店舗のアプリは "store"）
+   gift：特典の中身。空にすると特典の案内を出さない（代表のWチェックが済むまで公開版は空）
+   ===================================================================== */
+var KAGIYA_EC_CONFIG = /*__CONFIG__*/{
+  "shop": "https://caghiyabrewery.shop-pro.jp",
+  "logEndpoint": "https://script.google.com/macros/s/AKfycbwv43mFdvkprbM85LVMPQKDi_JbSg7uiDuKfyHC5XDcOvxkSlpq0EcDTnSzUS90v5w0xA/exec",
+  "kind": "brewery",
+  "gift": "",
+  "products": [
+    ["192534597","PILS NO.1（3本）"],["192534297","MELLOW YELLOW（3本）"],["192534621","JUMPIN' JACK FLASH（3本）"],
+    ["192534640","DOUBLE DECKER IPA（3本）"],["192534652","DAY DREAM（3本）"],["191569714","EL-DA MILE（3本）"],
+    ["191839890","WHITE RABBIT（3本）"],["191977442","PURPLE HAZE（3本）"],["193286475","HONEY MOON（3本）"],
+    ["191201809","GOLDEN EYE"],["191658761","PAINT IT BLACK"],["191770886","BRIT HOP"],
+    ["192499360","PLAYBACK PART 2"],["192764148","BRITISH BITTER"],["192933932","TROPICAL MANGO IPA"],
+    ["193868701","【10月限定】ブラッドオレンジ香るアンバーエール（3本）"],
+    ["191485213","【人気No.1】初心者のクラフトビール飲み比べセット（6本）"],
+    ["193868626","【10月限定】王道を楽しみたいあなたに！ブラッドオレンジ×4つの柑橘エール入りセット（6本）"],
+    ["193868663","【10月限定】個性を楽しみたいあなたに！ブラッドオレンジ×4つの柑橘エール入りセット（6本）"],
+    ["190729120","【川崎土産にも】ビール好きに贈るIPA飲み比べギフト（6本）"],
+    ["193868746","【食事と楽しむ】料理に合わせやすいクラフトビール3種（6本）"],
+    ["193869112","【香りで選ぶ】果実・ハーブ・スパイス香るクラフトビール（6本）"]
+  ]
+}/*__END__*/;
+
+var CFG = KAGIYA_EC_CONFIG, SHOP = CFG.shop, PRODUCTS = CFG.products;
+var OTHER = "other";
+var SRC_LABEL = {ec:"EC（商品のカード）", line:"LINE", event:"イベント", store:"お店", other:"その他"};
+var SRC_GROUP = {ec:"ec", line:"ec", event:"event", store:"etc", other:"etc"};
+var $ = function(id){ return document.getElementById(id); };
+var label = function(name){ return name.replace(/（\d+本）/g, "").trim(); };
+var inArtifact = !!(window.claude && window.claude.use);
+[].forEach.call(document.querySelectorAll(".gift"), function(g){ g.hidden = !CFG.gift; });
+[].forEach.call(document.querySelectorAll(".giftName"), function(g){ g.textContent = CFG.gift || ""; });
+if (inArtifact) { $("protoNote").hidden = false; $("protoWarn").hidden = false; $("sampleRow").hidden = false; $("toMatome").hidden = false; }
+
+/* 流入：本番は ?src=ec|event|line&p=商品番号&ev=イベント名。試作は #ec-p商品番号 / #event / #event-p商品番号 */
+var qs = new URLSearchParams(location.search);
+var hm = location.hash.match(/^#(ec|event|line)?-?(?:p(\d+))?$/) || [];
+var FIXED_SRC = qs.get("src") || hm[1] || "";
+var FIXED_P = qs.get("p") || hm[2] || ((location.hash.match(/^#p(\d+)$/) || [])[1]) || "";
+var FIXED_EV = qs.get("ev") || "";
+
+/* 商品の選択肢（本数を抜いて表示） */
+var sel = $("product");
+sel.append(new Option("選んでください", ""));
+var g1 = document.createElement("optgroup"); g1.label = "ビール";
+var g2 = document.createElement("optgroup"); g2.label = "セット";
+PRODUCTS.forEach(function(p){ (/セット|ギフト|3種/.test(p[1]) ? g2 : g1).append(new Option(label(p[1]), p[0])); });
+sel.append(g1, g2, new Option("その他（一覧に無いビール・イベントで飲んだ など）", OTHER));
+if (FIXED_P && PRODUCTS.some(function(p){ return p[0] === FIXED_P; })) sel.value = FIXED_P;
+
+function chipsOf(name){ return document.querySelector('.chips[data-name="' + name + '"]'); }
+function picked(name){ return [].map.call(chipsOf(name).querySelectorAll('.chip[aria-pressed="true"]'), function(c){ return c.textContent.trim(); }); }
+function single(name){ var c = chipsOf(name).querySelector('.chip[aria-pressed="true"]'); return c ? c.dataset.v : ""; }
+function singleLabel(name){ var c = chipsOf(name).querySelector('.chip[aria-pressed="true"]'); return c ? c.textContent.trim() : ""; }
+function setPicked(name, labels){ [].forEach.call(chipsOf(name).querySelectorAll(".chip"), function(c){ c.setAttribute("aria-pressed", labels.indexOf(c.textContent.trim()) >= 0 ? "true" : "false"); }); }
+function setSingle(name, v){ [].forEach.call(chipsOf(name).querySelectorAll(".chip"), function(c){ c.setAttribute("aria-pressed", c.dataset.v === v ? "true" : "false"); }); }
+
+function src(){ return FIXED_SRC || single("src"); }
+function refresh(){
+  var o = sel.value === OTHER, s = src();
+  $("otherBox").hidden = !o; $("toneBox").hidden = o;
+  $("make").textContent = o ? "答えを送る" : "下書きを作る";
+  $("eventBlock").hidden = s !== "event";
+  $("opShopLabel").innerHTML = (s === "event" ? "ブース・会場について" : s === "store" ? "お店について" : "ネットショップについて") + '<span class="opt">任意</span>';
+  $("srcBox").hidden = !!FIXED_SRC;
+  if (FIXED_SRC) { $("srcBadge").hidden = false; $("srcBadge").textContent = s === "event" ? ("イベント会場から" + (FIXED_EV ? "：" + FIXED_EV : "")) : s === "ec" ? "お買い上げの商品から" : "カギヤのLINEから"; }
+  if (FIXED_EV) { $("evName").value = FIXED_EV; $("evName").closest(".q").hidden = true; }
+}
+sel.addEventListener("change", refresh);
+document.querySelectorAll(".chips").forEach(function(g){ g.addEventListener("click", function(e){
+  var b = e.target.closest(".chip"); if (!b) return;
+  if (g.hasAttribute("data-single")) [].forEach.call(g.querySelectorAll(".chip"), function(c){ c.setAttribute("aria-pressed", c === b ? "true" : "false"); });
+  else b.setAttribute("aria-pressed", b.getAttribute("aria-pressed") === "true" ? "false" : "true");
+  if (g.dataset.name === "adult") { var no = single("adult") === "no"; $("minor").hidden = !no; $("qs").hidden = no; }
+  if (g.dataset.name === "src") refresh();
+  if (g.dataset.name === "mf") renderMatome();
+}); });
+refresh();
+
+function answers(){
+  var p = PRODUCTS.filter(function(x){ return x[0] === sel.value; })[0];
+  return { product: p ? label(p[1]) : "", scene: picked("scene"), taste: picked("taste"),
+    impression: $("impression").value.trim(), food: $("food").value.trim(), who: picked("who"),
+    tone: single("tone") === "casual" ? "casual" : "polite" };
+}
+
+/* 下書き：答えだけを並べて文にする（答えにない言葉は足さない） */
+var BAD = ["思ったより苦い","思ったより重い","好みと違った"];
+var SCENE = {"家でごはんと":"家でごはんと一緒に","友だち・家族と":"友だちや家族と","ひとりでゆっくり":"ひとりでゆっくり","イベントで":"イベントで"};
+function joinJa(a){ return a.length <= 1 ? (a[0] || "") : a.slice(0, -1).join("、") + "、" + a[a.length - 1]; }
+function draft(a){
+  var c = a.tone === "casual", s = [];
+  var scenes = a.scene.filter(function(x){ return !/贈りもの/.test(x); }).map(function(x){ return SCENE[x] || x; });
+  var gift = a.scene.filter(function(x){ return /贈りもの/.test(x); })[0];
+  if (gift === "贈りものにした") s.push(c ? a.product + "を贈りものにした。" : a.product + "を贈りものにしました。");
+  else if (gift) s.push(c ? a.product + "を贈りものでもらった。" : a.product + "を贈りものでいただきました。");
+  if (scenes.length) s.push(gift ? (c ? joinJa(scenes) + "飲んだ。" : joinJa(scenes) + "飲みました。") : (c ? a.product + "を、" + joinJa(scenes) + "飲んだ。" : a.product + "を、" + joinJa(scenes) + "飲みました。"));
+  else if (!gift) s.push(c ? a.product + "を飲んだ。" : a.product + "を飲みました。");
+  var good = a.taste.filter(function(t){ return BAD.indexOf(t) < 0; }), bad = a.taste.filter(function(t){ return BAD.indexOf(t) >= 0; });
+  if (good.length) s.push(c ? joinJa(good) + "って感じ。" : joinJa(good) + "と感じました。");
+  if (bad.length) s.push(good.length ? (c ? "ただ、" + joinJa(bad) + "かな。" : "ただ、" + joinJa(bad) + "と感じたところもありました。") : (c ? "正直、" + joinJa(bad) + "。" : "正直に言うと、" + joinJa(bad) + "と感じました。"));
+  if (a.impression) s.push(a.impression.replace(/[。．.!！]+$/, "") + "。");
+  if (a.food) s.push(c ? a.food + "と合わせた。" : a.food + "と合わせました。");
+  if (a.who.length) s.push(c ? joinJa(a.who) + "にすすめたい。" : joinJa(a.who) + "にすすめたいです。");
+  return { title: a.product.replace(/【.*?】/g, "").slice(0, 24) + "の感想", body: s.join("") };
+}
+
+function showStep(n){
+  $("step1").hidden = n !== 1; $("step2").hidden = n !== 2; $("thanks").hidden = n !== 3; $("matome").hidden = n !== 4;
+  $("steps").hidden = n === 4; $("foot").hidden = n === 4;
+  $("s1").className = n === 1 ? "on" : ""; $("s2").className = $("s3").className = n === 2 ? "on" : "";
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+function updateCount(){ $("count").textContent = $("body").value.length + "字"; }
+$("body").addEventListener("input", updateCount);
+
+/* 答えの記録（口コミのカギと同じ：本番はGASでスプレッドシートへ。試作はこのページの保存場所） */
+var db = null;
+var dbReady = inArtifact ? window.claude.use("db").then(function(d){ db = d; }).catch(function(){}) : Promise.resolve();
+var sid = Math.random().toString(36).slice(2, 10);
+function opinions(){ return { beer: $("opBeer").value.trim(), staff: $("opStaff").value.trim(), shop: $("opShop").value.trim(), other: $("opOther").value.trim() }; }
+function details(){
+  var a = answers(), s = src(), ev = s === "event", other = sel.value === OTHER;
+  return {
+    sid: sid, src: s, srcLabel: SRC_LABEL[s] || "", qr: !!FIXED_SRC,
+    productId: other ? "" : sel.value, product: other ? "その他" : a.product, otherName: other ? $("otherName").value.trim() : "",
+    scene: a.scene, taste: a.taste, impression: a.impression, food: a.food, who: a.who,
+    evName: ev ? $("evName").value.trim() : "", evScore: ev ? singleLabel("evScore") : "",
+    staff: ev ? picked("staff") : [], evGood: ev ? picked("evGood") : []
+  };
+}
+/* 店舗の口コミアプリと同じ形（kind / event / points / beers / withwho / tone / personal / draft / opinions / stage / src）。1回の回答につき1回だけ送る。
+   端末の情報（device）は送らない。この画面だけの答えは extra に入れる */
+function payload(stage){
+  var d = details(), op = opinions(), a = answers();
+  var good = d.taste.filter(function(t){ return BAD.indexOf(t) < 0; });
+  return {
+    ts: new Date().toISOString(), kind: CFG.kind || "brewery",
+    event: d.src === "event" ? (d.evName || "イベント") : (d.srcLabel || "ネットショップ"),
+    points: good.concat(d.evGood), beers: [d.product === "その他" ? (d.otherName || "その他") : d.product],
+    withwho: d.scene.join(" / "), tone: stage === "draft" ? (a.tone === "casual" ? "くだけた感じ" : "です・ます") : "",
+    personal: d.impression, draft: stage === "draft" ? $("body").value : "",
+    opinions: { beer: op.beer, staff: [d.staff.join("、"), op.staff].filter(Boolean).join("／"), shop: [d.evScore ? "イベントの満足：" + d.evScore : "", op.shop].filter(Boolean).join("／"), other: op.other },
+    stage: stage, src: "ec-review:" + (d.src || "none") + (d.qr ? ":qr" : "") + (d.productId ? ":p" + d.productId : ""),
+    extra: d
+  };
+}
+var sent = false;
+function record(stage){
+  if (stage === "open") {   /* 試作の集約だけ：レビュー画面を開いた印（本番では送らない＝1回だけの約束） */
+    return dbReady.then(function(){ if (db) db.collection("answers").doc(sid).update({ openedReview: true }).catch(function(){}); });
+  }
+  if (sent) return Promise.resolve(true);
+  sent = true;
+  var row = payload(stage);
+  if (CFG.logEndpoint && !inArtifact) {
+    try { fetch(CFG.logEndpoint, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(row) }); } catch (e) {}
+    return Promise.resolve(true);
+  }
+  return dbReady.then(function(){
+    if (!db) return false;
+    return db.collection("answers").doc(sid).set(row).then(function(){ return true; }).catch(function(){ return false; });
+  });
+}
+
+$("make").addEventListener("click", function(){
+  var a = answers(), other = sel.value === OTHER;
+  var err = function(t){ $("formErr").textContent = t; $("formErr").hidden = false; };
+  if (single("adult") !== "yes") return err("最初の「20歳以上ですか」に答えてください。");
+  if (!src()) return err("「このアンケートを、どこで知りましたか」に答えてください。");
+  if (!sel.value) return err("商品を選んでください。");
+  if (!a.scene.length && !a.taste.length && !a.impression) return err("「どんなときに」「味」「印象に残ったこと」のどれか1つに答えてください。");
+  $("formErr").hidden = true;
+  if (!other) { var d = draft(a); $("title").value = d.title; $("body").value = d.body; updateCount(); }
+  $("make").disabled = true; $("makeStatus").textContent = "送っています…";
+  record(other ? "opinionOnly" : "draft").then(function(saved){
+    $("make").disabled = false; $("makeStatus").textContent = "";
+    if (other) { $("thanksNote").textContent = saved ? "" : "（この画面では記録できませんでした）"; showStep(3); return; }
+    $("rwStatus").textContent = ""; $("copied").textContent = "";
+    $("go").href = SHOP + "/customer/products/" + sel.value + "/reviews/new";
+    showStep(2);
+  });
+});
+
+document.querySelectorAll("[data-rw]").forEach(function(b){ b.addEventListener("click", function(){
+  var kind = b.dataset.rw;
+  if (kind === "short") {
+    var parts = $("body").value.trim().split("。").filter(function(x){ return x.trim(); });
+    if (!parts.length) return;
+    $("body").value = parts.slice(0, 2).join("。") + "。"; updateCount(); $("rwStatus").textContent = "最初の2文だけ残しました。"; return;
+  }
+  setSingle("tone", kind);
+  var d = draft(answers()); $("body").value = d.body; updateCount();
+  $("rwStatus").textContent = "答えから作り直しました（自分で直したところは戻ります）。";
+}); });
+$("opOnly").addEventListener("click", function(){
+  var op = opinions();
+  var err = function(t){ $("formErr").textContent = t; $("formErr").hidden = false; };
+  if (single("adult") !== "yes") return err("最初の「20歳以上ですか」に答えてください。");
+  if (!op.beer && !op.staff && !op.shop && !op.other && !(src() === "event" && (singleLabel("evScore") || picked("staff").length))) return err("「お店への意見」のどこかに書いてから送ってください。");
+  $("formErr").hidden = true;
+  record("opinionOnly").then(function(saved){ $("thanksNote").textContent = saved ? "" : "（この画面では記録できませんでした）"; showStep(3); });
+});
+$("selfWrite").addEventListener("click", function(){ $("title").value = ""; $("body").value = ""; updateCount(); $("body").focus(); $("rwStatus").textContent = "下書きを消しました。自由に書いてください。"; });
+
+$("go").addEventListener("click", function(e){
+  var body = $("body").value.trim();
+  if (!body) { e.preventDefault(); $("rwStatus").textContent = "レビュー内容が空です。書いてからボタンを押してください。"; return; }
+  record("open");
+  var done = function(ok){ $("copied").textContent = ok ? "コピーしました。開いた画面の「レビュー内容」に貼り付けてください。" : "自動でコピーできませんでした。レビュー内容の文を選んでコピーしてから、開いた画面に貼り付けてください。"; };
+  try { navigator.clipboard.writeText(body).then(function(){ done(true); }, function(){ $("body").select(); done(false); }); } catch (x) { $("body").select(); done(false); }
+});
+$("back").addEventListener("click", function(){ showStep(1); });
+$("again").addEventListener("click", function(){
+  ["impression","food","otherName"].forEach(function(id){ $(id).value = ""; });
+  ["scene","taste","who","staff","evGood"].forEach(function(n){ setPicked(n, []); }); setSingle("evScore", "");
+  ["opBeer","opStaff","opShop","opOther"].forEach(function(id){ $(id).value = ""; });
+  sid = Math.random().toString(36).slice(2, 10); sent = false; showStep(1);
+});
+
+function fill(ev){
+  setSingle("adult", "yes"); $("qs").hidden = false; $("minor").hidden = true;
+  if (!FIXED_SRC) setSingle("src", ev ? "event" : "ec");
+  if (!sel.value) sel.value = "192534297";
+  setPicked("scene", [ev ? "イベントで" : "家でごはんと"]); setPicked("taste", ["すっきり", "飲みやすい", "思ったより苦い"]);
+  $("impression").value = "香りがよかった"; $("food").value = ev ? "" : "からあげ"; setPicked("who", ["クラフトビールが初めての人"]);
+  if (ev) { if (!FIXED_EV) $("evName").value = "（見本）川崎のビールイベント"; setSingle("evScore", "5"); setPicked("staff", ["好みに合うビールを教えてくれた", "待ち時間が長かった"]); setPicked("evGood", ["ビールの種類", "会場の雰囲気"]); $("opStaff").value = "混んでいて待ったけど、説明はていねいだった"; $("opShop").value = "ブースの場所がわかりにくかった"; }
+  $("formErr").hidden = true; refresh();
+}
+$("fillSample").addEventListener("click", function(){ fill(false); });
+$("fillSampleEv").addEventListener("click", function(){ fill(true); });
+
+/* 集約ページ（試作のみ） */
+var rows = [], unsub = null;
+function esc(s){ return String(s == null ? "" : s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+function bars(title, counts){
+  var e = Object.keys(counts).map(function(k){ return [k, counts[k]]; }).sort(function(a, b){ return b[1] - a[1]; }).slice(0, 8);
+  if (!e.length) return "";
+  var max = e[0][1];
+  return '<div class="sumbox"><h3>' + esc(title) + '</h3>' + e.map(function(x){ return '<div class="bar"><span class="lab">' + esc(x[0]) + '</span><span class="trk"><span class="fill" style="display:block;width:' + Math.round(x[1] / max * 100) + '%"></span></span><span class="n">' + x[1] + '</span></div>'; }).join("") + '</div>';
+}
+function tally(list, f){ var c = {}; list.forEach(function(r){ [].concat(f(r) || []).forEach(function(k){ if (k) c[k] = (c[k] || 0) + 1; }); }); return c; }
+function renderMatome(){
+  var f = single("mf");
+  var list = rows.filter(function(r){ return !f || SRC_GROUP[r.src] === f; });
+  if (!list.length) { $("sum").innerHTML = ""; $("cards").innerHTML = '<p class="empty">まだ答えはありません。アンケートに答えると、ここに並びます。</p>'; return; }
+  var ev = list.filter(function(r){ return r.src === "event"; });
+  $("sum").innerHTML =
+    bars("合計 " + list.length + "件・どこから", tally(list, function(r){ return SRC_LABEL[r.src]; })) +
+    bars("レビュー画面まで進んだ", tally(list.filter(function(r){ return r.productId; }), function(r){ return r.openedReview ? "開いた" : "開いていない"; })) +
+    bars("商品", tally(list, function(r){ return r.product === "その他" ? "その他：" + (r.otherName || "名前なし") : r.product; })) +
+    bars("味", tally(list, function(r){ return r.taste; })) +
+    (ev.length ? bars("イベントの満足（" + ev.length + "件）", tally(ev, function(r){ return r.evScore; })) + bars("スタッフの対応", tally(ev, function(r){ return r.staff; })) + bars("イベントでよかったこと", tally(ev, function(r){ return r.evGood; })) : "");
+  $("cards").innerHTML = list.slice(0, 100).map(function(r){
+    var at = r.ts ? new Date(r.ts) : null;
+    return '<div class="card"><div class="top"><span class="name">' + esc(r.product === "その他" ? "その他：" + (r.otherName || "名前なし") : r.product) + '</span><span class="when">' + (at ? at.toLocaleString("ja-JP", {month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"}) : "") + '</span></div>' +
+      '<div class="tags"><span class="tag src">' + esc(SRC_LABEL[r.src] || "") + (r.evName ? "：" + esc(r.evName) : "") + '</span>' + [].concat(r.scene || [], r.taste || []).map(function(t){ return '<span class="tag">' + esc(t) + '</span>'; }).join("") + '</div>' +
+      (r.impression ? '<div>「' + esc(r.impression) + '」</div>' : "") +
+      (r.src === "event" ? '<div>イベント：' + esc(r.evScore || "—") + (r.staff && r.staff.length ? "／スタッフ：" + esc(r.staff.join("、")) : "") + '</div>' : "") +
+      (r.opinions && (r.opinions.beer || r.opinions.staff || r.opinions.shop || r.opinions.other) ? '<div class="note">お店への意見：' + esc([["ビール", r.opinions.beer], ["接客", r.opinions.staff], ["お店・会場", r.opinions.shop], ["そのほか", r.opinions.other]].filter(function(x){ return x[1]; }).map(function(x){ return x[0] + "「" + x[1] + "」"; }).join(" ")) + '</div>' : "") +
+      (r.productId ? '<div class="hint">' + (r.openedReview ? "レビュー画面を開いた" : "レビュー画面は開いていない") + '</div>' : "") + '</div>';
+  }).join("");
+}
+function openMatome(){
+  showStep(4);
+  dbReady.then(function(){
+    if (!db) { $("cards").innerHTML = '<p class="empty">この画面では記録を読めません。</p>'; return; }
+    if (unsub) { renderMatome(); return; }
+    unsub = db.collection("answers").orderBy("ts", "desc").limit(1000).onSnapshot(function(snap){
+      rows = snap.docs.map(function(d){ var v = d.data(); return Object.assign({}, v.extra || v, { ts: v.ts, stage: v.stage, opinions: v.opinions, openedReview: v.openedReview }); }); renderMatome();
+    }, function(){ $("cards").innerHTML = '<p class="empty">読み込めませんでした。ページを開き直してください。</p>'; });
+  });
+}
+$("toMatome").addEventListener("click", function(e){ e.preventDefault(); openMatome(); });
+$("toSurvey").addEventListener("click", function(e){ e.preventDefault(); showStep(1); });
+if (location.hash === "#matome") openMatome();
+</script>
+
+</body>
+</html>
