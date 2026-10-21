@@ -119,7 +119,7 @@ footer a{color:var(--navy)}
   <section id="step1">
     <div class="gift">
       <svg viewBox="0 0 44 44" aria-hidden="true"><rect x="6" y="18" width="32" height="20" rx="3" fill="#F5C13D" stroke="#1A2B5C" stroke-width="2.5"/><rect x="4" y="12" width="36" height="8" rx="2" fill="#fff" stroke="#1A2B5C" stroke-width="2.5"/><path d="M22 12 v26" stroke="#1A2B5C" stroke-width="2.5"/><path d="M22 12 q-10 -10 -12 -2 q0 4 12 2 q10 -10 12 -2 q0 4 -12 2" fill="#fff" stroke="#1A2B5C" stroke-width="2.5" stroke-linejoin="round"/></svg>
-      <div><b>口コミを書いてくださった方へ</b>口コミを投稿してくださった方に、<span class="giftName"></span>をお渡しします。よい内容かどうか、星の数は関係ありません。</div>
+      <div><b>イベントで口コミを書いてくださった方へ</b>口コミを投稿してくださった方に、<span class="giftName"></span>をお渡しします。よい内容かどうか、星の数は関係ありません。</div>
     </div>
     <div class="row" id="sampleRow" hidden>
       <button class="btn sub" type="button" id="fillSample">見本の答えで試す</button>
@@ -288,7 +288,7 @@ footer a{color:var(--navy)}
     <p class="warn" id="protoWarn" hidden>試作の注意：開いたレビュー画面で送ると、本当にショップへ投稿されます。ためすときは送信の手前で止めてください。</p>
     <div class="gift">
       <svg viewBox="0 0 44 44" aria-hidden="true"><rect x="6" y="18" width="32" height="20" rx="3" fill="#F5C13D" stroke="#1A2B5C" stroke-width="2.5"/><rect x="4" y="12" width="36" height="8" rx="2" fill="#fff" stroke="#1A2B5C" stroke-width="2.5"/><path d="M22 12 v26" stroke="#1A2B5C" stroke-width="2.5"/></svg>
-      <div><b>プレゼントの受け取り</b>投稿したあと、カギヤブルワリーのLINEに「口コミを書きました」と、投稿したときのニックネームを送ってください。お店がレビューを確かめてから、<span class="giftName"></span>をお渡しします。</div>
+      <div><b>プレゼントの受け取り</b>レビューを送ったら、送ったあとの画面を会場のスタッフに見せてください。<span class="giftName"></span>をお渡しします。</div>
     </div>
     <div class="row"><button class="btn sub" type="button" id="back">答えを直す</button></div>
   </section>
@@ -340,7 +340,7 @@ footer a{color:var(--navy)}
    カギヤ 口コミ下書き（EC）— 設定。「口コミのカギ」と同じく、この部分だけ直せば動きが変わります
    logEndpoint：答えを送るGoogle Apps Script（/exec）。店舗の口コミアプリ（口コミのカギ）と同じ送り先・同じ形。空なら送らない
    kind："brewery"＝醸造部（店舗のアプリは "store"）
-   gift：お渡しするもの（10/21 しずさ「ささやかなプレゼントをお渡しします」）。空にすると案内を出さない
+   gift：お渡しするもの（10/21 しずさ「ささやかなプレゼントをお渡しします」）。イベントのときだけ案内を出す（ECは牧田さんとクーポンを相談中）。空にすると出さない
    ===================================================================== */
 var KAGIYA_EC_CONFIG = /*__CONFIG__*/{
   "shop": "https://caghiyabrewery.shop-pro.jp",
@@ -370,7 +370,6 @@ var SRC_GROUP = {ec:"ec", line:"ec", event:"event", store:"etc", other:"etc"};
 var $ = function(id){ return document.getElementById(id); };
 var label = function(name){ return name.replace(/（\d+本）/g, "").trim(); };
 var inArtifact = !!(window.claude && window.claude.use);
-[].forEach.call(document.querySelectorAll(".gift"), function(g){ g.hidden = !CFG.gift; });
 [].forEach.call(document.querySelectorAll(".giftName"), function(g){ g.textContent = CFG.gift || ""; });
 if (inArtifact) { $("protoNote").hidden = false; $("protoWarn").hidden = false; $("sampleRow").hidden = false; $("toMatome").hidden = false; }
 
@@ -403,6 +402,7 @@ function refresh(){
   $("otherBox").hidden = !o; $("toneBox").hidden = o;
   $("make").textContent = o ? "答えを送る" : "下書きを作る";
   $("eventBlock").hidden = s !== "event";
+  [].forEach.call(document.querySelectorAll(".gift"), function(g){ g.hidden = !(CFG.gift && s === "event"); });  /* プレゼントはイベントのときだけ（10/21 しずさ） */
   $("opShopLabel").innerHTML = (s === "event" ? "ブース・会場について" : s === "store" ? "お店について" : "ネットショップについて") + '<span class="opt">任意</span>';
   $("srcBox").hidden = !!FIXED_SRC;
   if (FIXED_SRC) { $("srcBadge").hidden = false; $("srcBadge").textContent = s === "event" ? ("イベント会場から" + (FIXED_EV ? "：" + FIXED_EV : "")) : s === "ec" ? "お買い上げの商品から" : "カギヤのLINEから"; }
